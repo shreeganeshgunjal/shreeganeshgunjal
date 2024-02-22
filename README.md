@@ -18,3 +18,25 @@ Printf("Hello Self"),
 return0,
 
 };
+
+
+
+
+import sqlite3
+
+# Connect to database (creates it if it doesn't exist)
+conn = sqlite3.connect('example.db')
+
+# Create a cursor object to execute SQL commands
+cur = conn.cursor()
+
+# Create a table
+cur.execute('''CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY,
+                username TEXT,
+                email TEXT
+            )''')
+
+# Commit changes and close the connection
+conn.commit()
+conn.close()
